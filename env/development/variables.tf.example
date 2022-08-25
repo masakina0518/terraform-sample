@@ -1,0 +1,51 @@
+variable "environment" {
+  default = "development"
+}
+
+variable "project_name" {
+  default = "test"
+}
+
+variable "instance_count" {
+  default = 1
+}
+
+# packerで事前にAMIを作成しておく
+variable "instance_ami_id" {
+  default = "ami-xxxxxxxxxxxxxxxxxxxxx"
+}
+
+# albは実行リージョンと同じ証明書
+variable "alb_certificate_arn" {
+  default = "arn:aws:acm:ap-northeast-1:xxxxxxxxxxxxxxxxx:certificate/xxxxxxxxxxxxxxxxx"
+}
+
+# Cloudfrontはus-east-1リージョン証明書の作成時に指定するドメインと合わせる
+variable "cf_aliases" {
+  default = ["example.com", "*.example.com"]
+}
+
+# Cloudfrontはus-east-1リージョン証明書、
+variable "cf_certificate_arn" {
+  default = "arn:aws:acm:us-east-1:xxxxxxxxxxxxxxxxx:certificate/xxxxxxxxxxxxxxxxx"
+}
+
+# Route53は手動設定
+variable "route53_zone_id" {
+  default = "XXXXXXXXXXXXXXXXXXXXXX"
+}
+
+# Route53は手動設定
+variable "route53_name" {
+  default = "dev.example.com"
+}
+
+# SESドメイン
+variable "ses_domain" {
+  default = "example.com"
+}
+
+# SESでテスト送信可能なメールアドレス
+variable "ses_mail" {
+  default = ["sample@example.com"]
+}
